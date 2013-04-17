@@ -1,5 +1,4 @@
-fmaven
-------------
+### fmaven
   Fantom Maven Plugin has been designed to make working with fantom as easy as possible. 
   The fmaven-plugin is used for compiling/testing/running Fantom code in maven. If there are problems please [let us know](https://github.com/zapletnev/fmaven/issues/new).
 
@@ -23,6 +22,7 @@ fmaven
     
 ### Depencencies
     <dependencies>
+      ...
       <dependency>
     	  <groupId>org.fantom</groupId>
         <artifactId>sys</artifactId>
