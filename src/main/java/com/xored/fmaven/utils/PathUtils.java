@@ -10,7 +10,7 @@ public class PathUtils {
 
 	// remove this piece of shit
 	public static String platformPath(File file, boolean trailing) {
-		String path = "file:/" + file.getPath().replaceAll("\\\\", "/");
+		String path = "file:" + file.getPath().replaceAll("\\\\", "/");
 		if (!trailing) {
 			return path;
 		}

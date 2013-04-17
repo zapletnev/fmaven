@@ -10,6 +10,7 @@ import com.google.common.base.Joiner;
 
 import fan.fmaven.Compiler;
 import fan.fmaven.FanPod;
+import fan.fmaven.Main;
 import fan.sys.List;
 import fan.sys.Uri;
 
@@ -20,7 +21,6 @@ public class FantomCompiler {
 		if (!fanOutputDir.exists()) {
 			fanOutputDir.mkdirs();
 		}
-
 		Compiler compiler = new Compiler().make(
 				Uri.fromStr(platformPath(fanOutputDir, true)),
 				Uri.fromStr(platformPath(podRepo, true)));

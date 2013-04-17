@@ -1,4 +1,4 @@
-using fcompiler
+using compiler
 
 class Compiler
 {
@@ -60,7 +60,7 @@ class Compiler
   private CompilerErr[][] compile(CompilerInput input)
   {
     caughtErrs := CompilerErr[,]
-    compiler := fcompiler::Compiler(input)
+    compiler := compiler::Compiler(input)
     
     try compiler.compile  
     catch(CompilerErr e) { echo(e); caughtErrs.add(e) } 

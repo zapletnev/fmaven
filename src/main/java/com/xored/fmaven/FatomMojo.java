@@ -66,11 +66,11 @@ public abstract class FatomMojo extends AbstractMojo {
 	/**
 	 * What version of Fantom should we compile with?
 	 * 
-	 * @parameter default-value="1.0.63"
+	 * @parameter default-value="1.0.64"
 	 */
 	private String version;
 
-	private List<String> acceptableVersions = ImmutableList.of("1.0.63");
+	private List<String> acceptableVersions = ImmutableList.of("1.0.64");
 
 	/**
 	 * A list of inclusion filters for the compiler. ex :

@@ -9,10 +9,16 @@ import java.io.File;
  */
 public class FantomPackageMojo extends FatomMojo {
 
+	/**
+	 * Pod name
+	 * 
+	 * @parameter
+	 */
+	private String podName;
+	
 	@Override
 	protected void doExecute() {
-		File destination = new File(fanOutputDir, String.format("%s.pod",
-				project.getArtifactId()));
+		File destination = new File(fanOutputDir, podName + ".pod");
 		project.getArtifact().setFile(destination);
 	}
 }

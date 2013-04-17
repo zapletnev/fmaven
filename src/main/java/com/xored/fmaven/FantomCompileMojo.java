@@ -15,6 +15,10 @@ import com.xored.fmaven.compiler.FantomCompiler;
 import com.xored.fmaven.utils.PathUtils;
 
 import fan.fmaven.FanPod;
+import fan.fmaven.Main;
+import fan.sys.Env;
+import fan.sys.Pod;
+import fan.sys.Sys;
 
 /**
  * @goal execute
@@ -81,6 +85,8 @@ public class FantomCompileMojo extends FatomMojo {
 	}
 
 	private CompileStatus compile(File buildFan) {
+		load();
+		
 		FantomCompiler compiler = new FantomCompiler();
 
 		final FanPod fanPod = FanPod
@@ -94,6 +100,18 @@ public class FantomCompileMojo extends FatomMojo {
 					+ e.getMessage());
 		}
 		return status;
+	}
+	
+	private static void load() {
+		System.getProperties().put("fan.jardist", "true");
+		System.getProperties().put("fan.home", ".");
+		Sys.boot();
+		Sys.bootEnv.setArgs(new String[0]);
+		Env.cur().loadPodClass(Pod.find("sys"));
+		Env.cur().loadPodClass(Pod.find("compiler"));
+		Env.cur().loadPodClass(Pod.find("fmaven"));
+		
+		Main.main();
 	}
 
 	private File podsRepo() throws IOException {

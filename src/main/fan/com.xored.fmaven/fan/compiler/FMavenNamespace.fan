@@ -1,4 +1,4 @@
-using fcompiler
+using compiler
 
 class FMavenNamespace : CNamespace
 {

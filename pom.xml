@@ -12,29 +12,42 @@
             <name>Igor Zapletnev</name>
             <email>igor.zapletnev@gmail.com</email>
         </developer>
-  </developers>
+    </developers>
   
-  <properties>
-    <maven.version>3.0</maven.version>
-    <maven.compiler.source>1.5</maven.compiler.source>
-    <maven.compiler.target>1.5</maven.compiler.target>
-    <encoding>UTF-8</encoding>
-   	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-   </properties>
+	<properties>
+    	<encoding>UTF-8</encoding>
+    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
   
    <build>
-   		<plugins>
-    		<plugin>
-        		<groupId>org.apache.maven.plugins</groupId>
-            	<artifactId>maven-compiler-plugin</artifactId>
-            	<version>2.3.2</version>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-plugin-plugin</artifactId>
+				<version>3.2</version>
+				<configuration>
+					<goalPrefix>q7-server-maven-plugin</goalPrefix>
+				</configuration>
+				<executions>
+					<execution>
+						<id>generated-helpmojo</id>
+						<goals>
+							<goal>helpmojo</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
-		</plugins>
+         </plugins>
     </build>  
     
 	<dependencies>
-		<dependency>
-        	<groupId>org.apache.maven</groupId>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
             <artifactId>maven-plugin-api</artifactId>
             <version>3.0.5</version>
         </dependency>
@@ -48,17 +61,12 @@
             <artifactId>maven-model</artifactId>
             <version>3.0.5</version>
         </dependency>
-		<dependency>
-            <groupId>org.codehaus.plexus</groupId>
-            <artifactId>plexus-classworlds</artifactId>
-            <version>2.4.2</version>
-        </dependency>
-		<dependency>
+        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>14.0.1</version>
         </dependency>
-		<dependency>
+        <dependency>
         	<groupId>com.xored</groupId>
         	<artifactId>fmavenfan</artifactId>
         	<version>1.0</version>
