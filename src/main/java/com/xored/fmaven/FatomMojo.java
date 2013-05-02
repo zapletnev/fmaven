@@ -13,8 +13,6 @@ import org.apache.maven.project.MavenProject;
 import org.apache.maven.toolchain.ToolchainManager;
 import org.codehaus.plexus.util.DirectoryScanner;
 
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
 public abstract class FatomMojo extends AbstractMojo {
@@ -22,7 +20,7 @@ public abstract class FatomMojo extends AbstractMojo {
 	protected static final String POD_EXT = "pod";
 
 	/**
-	 * @parameter expression="${project}"
+	 * @parameter expression="project"
 	 * @required
 	 * @readonly
 	 */
@@ -31,7 +29,7 @@ public abstract class FatomMojo extends AbstractMojo {
 	/**
 	 * The Maven Session Object
 	 * 
-	 * @parameter expression="${session}"
+	 * @parameter expression="session"
 	 * @required
 	 * @readonly
 	 */
@@ -49,28 +47,19 @@ public abstract class FatomMojo extends AbstractMojo {
 	/**
 	 * Default location of .fan source files.
 	 * 
-	 * @parameter expression="${basedir}/src/main/fan/"
+	 * @parameter expression="basedir/src/main/fan/"
 	 * @required
 	 */
 	protected File fanDir;
 
 	/**
 	 * Location of the output files from the Coffee Compiler. Defaults to
-	 * ${build.directory}/fan
+	 * build.directory/fan
 	 * 
-	 * @parameter expression="${project.build.directory}/fan/"
+	 * @parameter expression="project.build.directory/fan/"
 	 * @required
 	 */
 	protected File fanOutputDir;
-
-	/**
-	 * What version of Fantom should we compile with?
-	 * 
-	 * @parameter default-value="1.0.64"
-	 */
-	private String version;
-
-	private List<String> acceptableVersions = ImmutableList.of("1.0.64");
 
 	/**
 	 * A list of inclusion filters for the compiler. ex :
@@ -99,17 +88,6 @@ public abstract class FatomMojo extends AbstractMojo {
 	protected Set<String> excludes = new HashSet<String>();
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
-		if (!acceptableVersions.contains(version)) {
-			String error = String
-					.format("Unsupported version of fanrom specified (%s) - supported versions: %s",
-							version, Joiner.on(", ").join(acceptableVersions));
-
-			throw new MojoExecutionException(error);
-		}
-
-		getLog().info(
-				String.format("fmaven-plugin using fantom version %s", version));
-
 		doExecute();
 	}
 

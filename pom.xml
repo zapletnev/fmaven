@@ -30,17 +30,6 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-plugin-plugin</artifactId>
 				<version>3.2</version>
-				<configuration>
-					<goalPrefix>q7-server-maven-plugin</goalPrefix>
-				</configuration>
-				<executions>
-					<execution>
-						<id>generated-helpmojo</id>
-						<goals>
-							<goal>helpmojo</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
          </plugins>
     </build>  
@@ -69,9 +58,15 @@
         <dependency>
         	<groupId>com.xored</groupId>
         	<artifactId>fmavenfan</artifactId>
-        	<version>1.0</version>
-        	<scope>system</scope>
-        	<systemPath>${project.basedir}/lib/fmaven.jar</systemPath>
+        	<version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
+    
+    <repositories>
+  		<repository>
+    		<id>fmaven-libs</id>
+    		<url>file:///Users/zapletnev/git/fmaven/libs</url>
+    		<layout>default</layout>
+  		</repository>
+	</repositories>
 </project>

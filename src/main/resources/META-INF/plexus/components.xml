@@ -8,11 +8,8 @@
 			</implementation>
 			<configuration>
 				<phases>
-					<generate-resources>
-						com.xored:fmaven-plugin:resources
-					</generate-resources>
 					<compile>
-						com.xored:fmaven-plugin:execute 
+						com.xored:fmaven-plugin:execute
 					</compile>
 					<package>
 						com.xored:fmaven-plugin:package

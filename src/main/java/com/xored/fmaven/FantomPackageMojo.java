@@ -4,7 +4,6 @@ import java.io.File;
 
 /**
  * @goal package
- * @threadSafe
  * @phase package
  */
 public class FantomPackageMojo extends FatomMojo {
