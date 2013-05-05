@@ -10,7 +10,6 @@ import com.google.common.base.Joiner;
 
 import fan.fmaven.Compiler;
 import fan.fmaven.FanPod;
-import fan.fmaven.Main;
 import fan.sys.List;
 import fan.sys.Uri;
 
