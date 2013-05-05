@@ -65,7 +65,7 @@
     <repositories>
   		<repository>
     		<id>fmaven-libs</id>
-    		<url>file:///Users/zapletnev/git/fmaven/libs</url>
+    		<url>file:///${basedir}/libs</url>
     		<layout>default</layout>
   		</repository>
 	</repositories>
