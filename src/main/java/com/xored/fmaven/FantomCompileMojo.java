@@ -68,20 +68,12 @@ public class FantomCompileMojo extends FatomMojo {
 		CompileStatus status = compile(buildFan);
 		long duration = (System.currentTimeMillis() - start);
 
-		if (status.code == SUCCESSFUL) {
-			getLog().info(
-					"Compilation successfully completed in "
-							+ String.format("[%.2fs]", duration / 1000.0));
-			File pod = new File(fanOutputDir, String.format("%s.%s", podName,
-					POD_EXT));
-			if (!pod.exists()) {
-				getLog().error("Could not find compiled pod " + pod.getPath());
-			}
+		
+		if (status.code != SUCCESSFUL) {
+			getLog().error("Compilation error: " + status.msg);
 		} else {
-			getLog().info(
-					String.format("Compilation finished in "
-							+ String.format("[%.2fs] with error: ",
-									duration / 1000.0) + status.msg));
+			getLog().info("Compilation finished in " 
+					+ String.format("[%.2fs]", duration / 1000.0));
 		}
 	}
 
