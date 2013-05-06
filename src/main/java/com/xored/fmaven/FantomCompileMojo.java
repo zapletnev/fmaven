@@ -23,7 +23,6 @@ import fan.sys.Sys;
 /**
  * @goal execute
  * @phase compile
- * @threadSafe
  */
 public class FantomCompileMojo extends FatomMojo {
 
