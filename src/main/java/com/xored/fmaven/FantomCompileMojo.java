@@ -5,9 +5,10 @@ import static com.xored.fmaven.compiler.CompileStatus.SUCCESSFUL;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 import org.apache.maven.artifact.Artifact;
+import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
 import org.codehaus.plexus.util.FileUtils;
 
 import com.xored.fmaven.compiler.CompileStatus;
@@ -47,17 +48,18 @@ public class FantomCompileMojo extends FatomMojo {
 	 */
 	private String podSummary;
 
+	private final static String buildfan = "build.fan";
+	
 	@Override
-	protected void doExecute() {
-		List<File> sources = getSourceFiles();
-		if (sources.isEmpty()) {
+	public void execute() throws MojoExecutionException, MojoFailureException {
+		File buildFan = new File(fanDir, buildfan);
+		if (!buildFan.exists()) {
 			getLog().error(
 					"Fantom sources could not be found. Build.fan should be stored in the "
 							+ fanDir.getPath());
 			return;
 		}
 
-		File buildFan = sources.get(0);
 		getLog().info(
 				String.format("Compiling source %s to %s", podName,
 						fanOutputDir.getAbsolutePath()));

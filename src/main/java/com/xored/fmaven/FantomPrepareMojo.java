@@ -1,5 +1,8 @@
 package com.xored.fmaven;
 
+import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
+
 /**
  * @goal resources
  * @phase generate-resources
@@ -7,7 +10,8 @@ package com.xored.fmaven;
  */
 public class FantomPrepareMojo  extends FatomMojo  {
 	@Override
-	protected void doExecute() {
+	public void execute() throws MojoExecutionException, MojoFailureException {
+		// dummy
 	}
 
 }
