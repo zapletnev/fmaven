@@ -3,32 +3,26 @@
 ** 
 class CompilerTests : Test
 {
-  Uri? podDir := unzip(`/resources/tests/pods.zip`)
+  Uri pods := unzip(`/resources/tests/pods.zip`)
   
-  Void testWorld()
+  Void testDependentWorld()
   {
     verifyNotNull(compile(FanPod("hello", unzip(`/resources/tests/hello.zip`)).depend("sys 1.0")))
   }
   
-  Void testDependentWorld()
+  private File? compile(FanPod pod) 
   {
-    verifyNotNull(compile(FanPod("helloDep", unzip(`/resources/tests/helloDep.zip`)).depend("sys 1.0").depend("hello 1.0")))
-  }
-  
-  File? compile(FanPod pod) 
-  {
-    compiler := Compiler(pod.podDir.uri, podDir) 
+    compiler := FCompiler(pod.podDir.uri, pods) 
     errors := compiler.compile(pod)
     compiler.dispose
     if (!errors.isEmpty) {
       fail(errors.toStr)
-      return null;
     }
     podFile := pod.podDir.plus(Uri.fromStr(pod.podName + ".pod"));
     return podFile.exists ? podFile : null
   }
   
-  Uri unzip(Uri uri)
+  private Uri unzip(Uri uri)
   {
     outDir := tempDir.createDir(uri.basename)
     zipFile := Zip.read(typeof.pod.file(uri).in)

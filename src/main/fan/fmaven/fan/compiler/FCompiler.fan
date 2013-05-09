@@ -1,6 +1,6 @@
 using compiler
 
-class Compiler
+class FCompiler
 {
   FMavenNamespace ns { private set }
   File output { private set }
@@ -10,7 +10,7 @@ class Compiler
     output = File(outDir)
     if (!output.exists) { output.create }
     
-    ns = FMavenNamespace.makeFrom(File(podsLoc))
+    ns = FMavenNamespace.makeFromDir(File(podsLoc))
   }
   
   CompilerErr[] compileAll(FanPod[] pods) 

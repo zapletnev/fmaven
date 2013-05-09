@@ -12,9 +12,9 @@ class FMavenNamespace : CNamespace
     init
   }
   
-  new makeFrom(File podsDir)
+  new makeFromDir(File pods)
   {
-    this.pods = [:].addList(podsDir.list) |File f -> Str|{ f.basename }
+    this.pods = [:].addList(pods.list) |File f -> Str|{ f.basename }
     init
   }
   
