@@ -4,20 +4,26 @@ class FMavenNamespace : CNamespace
 {
   private static const Str podExt := "pod"
   
-  private const Str:File locs
+  private const Str:File pods
   
-  new make(Str:File locs := [:]) 
+  new make(Str:File pods := [:]) 
   {
-    this.locs = locs
+    this.pods = pods
+    init
+  }
+  
+  new makeFrom(File podsDir)
+  {
+    this.pods = [:].addList(podsDir.list) |File f -> Str|{ f.basename }
     init
   }
   
   override FPod? findPod(Str podName)
   {
-    if(!locs.containsKey(podName)) return null
-    loc := locs[podName]
-    if(!loc.exists) return null
-    fpod := FPod(this, podName, Zip.open(loc))
+    if(!pods.containsKey(podName)) return null
+    pod := pods[podName]
+    if(!pod.exists) return null
+    fpod := FPod(this, podName, Zip.open(pod))
     fpod.read
     return fpod
   }
@@ -27,12 +33,6 @@ class FMavenNamespace : CNamespace
     return zip
   }
   private Zip[] zips := [,]
-  
-  Void addPod (Str loc, File file) 
-  { 
-    if (!podExt.equalsIgnoreCase(file.ext)) { return }
-    locs.add(loc, file) 
-  }
   
   public Void close() {
     zips.each { it.close }

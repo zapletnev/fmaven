@@ -18,10 +18,7 @@ class CompilerTests : Test
   File? compile(FanPod pod) 
   {
     compiler := Compiler(pod.podDir.uri, podDir) 
-    {
-      pods = [ pod ]
-    }
-    errors := compiler.compilePods
+    errors := compiler.compile(pod)
     compiler.dispose
     if (!errors.isEmpty) {
       fail(errors.toStr)

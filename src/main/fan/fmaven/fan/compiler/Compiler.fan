@@ -2,36 +2,32 @@ using compiler
 
 class Compiler
 {
-  FMavenNamespace? namespace
-  
-  FanPod[] pods := [,]
- 
-  File outputDir { private set }
+  FMavenNamespace ns { private set }
+  File output { private set }
   
   new make(Uri outDir, Uri podsLoc) 
   { 
-    outputDir = File(outDir)
-    if (!outputDir.exists) { outputDir.create }
-    prepareNamespace(podsLoc)
+    output = File(outDir)
+    if (!output.exists) { output.create }
+    
+    ns = FMavenNamespace.makeFrom(File(podsLoc))
   }
   
-  static new makeFromStr(Str outDirStr, Str podsLoc) { make(Uri.fromStr(outDirStr), Uri.fromStr(podsLoc)) }
-  
-  CompilerErr[] compilePods() 
+  CompilerErr[] compileAll(FanPod[] pods) 
   {
     CompilerErr[] caughtErrs := [,]
-    pods.each { caughtErrs.addAll(compilePod(it)) }
+    pods.each { caughtErrs.addAll(compile(it)) }
     return caughtErrs
   }
   
-  private CompilerErr[] compilePod(FanPod manifest) 
+  CompilerErr[] compile(FanPod manifest) 
   {
     buf := StrBuf()
     input := CompilerInput.make
     input.log         = CompilerLog(buf.out)
     input.podName     = manifest.podName
     input.version     = manifest.podVersion
-    input.ns          = namespace
+    input.ns          = ns
     input.depends     = manifest.rawDepends.dup
     input.includeDoc  = true
     input.summary     = manifest.podSummary
@@ -39,7 +35,7 @@ class Compiler
     input.baseDir     = manifest.baseDir
     input.srcFiles    = manifest.podSrc
     input.index       = manifest.podIndex
-    input.outDir      = File.os(outputDir.pathStr) 
+    input.outDir      = File.os(output.pathStr) 
     input.output      = CompilerOutputMode.podFile
     meta := manifest.meta.dup 
     meta["pod.docApi"] = true.toStr
@@ -47,7 +43,7 @@ class Compiler
     meta["pod.native.java"]   = (!manifest.javaDirs.isEmpty).toStr
     meta["pod.native.dotnet"] = false.toStr
     input.meta = meta
-    errs := compile(input)
+    errs := doCompile(input)
     if (!errs[0].isEmpty) return errs.flatten
     
 //    if (!manifest.javaDirs.isEmpty) errs.add(compileJava(consumer,projectPath))
@@ -57,7 +53,7 @@ class Compiler
     return errs.flatten
   }
   
-  private CompilerErr[][] compile(CompilerInput input)
+  private CompilerErr[][] doCompile(CompilerInput input)
   {
     caughtErrs := CompilerErr[,]
     compiler := compiler::Compiler(input)
@@ -68,18 +64,8 @@ class Compiler
     return [caughtErrs.addAll(compiler.errs), compiler.warns]
   }
   
-  private Void prepareNamespace(Uri podsDir)
-  { 
-    pods := [:]
-    File(podsDir).list.each |pod| 
-    {
-      pods.add(pod.basename, pod)
-    }
-    namespace = FMavenNamespace(pods)
-  }
-  
   Void dispose()
   {
-    namespace.close
+    ns.close
   }
 }
