@@ -5,7 +5,7 @@ class CompilerTests : Test
 {
   Uri pods := unzip(`/resources/tests/pods.zip`)
   
-  Void testDependentWorld()
+  Void testWorld()
   {
     verifyNotNull(compile(FanPod("hello", unzip(`/resources/tests/hello.zip`)).depend("sys 1.0")))
   }
