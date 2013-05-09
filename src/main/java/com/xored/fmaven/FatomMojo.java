@@ -12,7 +12,7 @@ public abstract class FatomMojo extends AbstractMojo {
 	protected static final String POD_EXT = "pod";
 
 	/**
-	 * @parameter expression="project"
+	 * @parameter property="project"
 	 * @required
 	 * @readonly
 	 */
@@ -21,7 +21,7 @@ public abstract class FatomMojo extends AbstractMojo {
 	/**
 	 * The Maven Session Object
 	 * 
-	 * @parameter expression="session"
+	 * @parameter property="session"
 	 * @required
 	 * @readonly
 	 */
@@ -39,7 +39,7 @@ public abstract class FatomMojo extends AbstractMojo {
 	/**
 	 * Default location of .fan source files.
 	 * 
-	 * @parameter expression="basedir/src/main/fan/"
+	 * @parameter property="basedir/src/main/fan/"
 	 * @required
 	 */
 	protected File fanDir;
@@ -48,7 +48,7 @@ public abstract class FatomMojo extends AbstractMojo {
 	 * Location of the output files from the Coffee Compiler. Defaults to
 	 * build.directory/fan
 	 * 
-	 * @parameter expression="project.build.directory/fan/"
+	 * @parameter property="project.build.directory/fan/"
 	 * @required
 	 */
 	protected File fanOutputDir;
