@@ -8,17 +8,28 @@ import com.google.common.base.Joiner;
 
 import fan.fmaven.FCompiler;
 import fan.fmaven.FanPod;
+import fan.sys.Env;
 import fan.sys.List;
+import fan.sys.Pod;
+import fan.sys.Sys;
 import fan.sys.Uri;
 
 public class FantomCompiler {
 
-	public CompileStatus compile(FanPod pod, File fanOutputDir, File podRepo) {
+	private File podsRepo;
+
+	public FantomCompiler(File podsRepo) {
+		boot();
+		
+		this.podsRepo = podsRepo;
+	}
+	
+	public CompileStatus compile(FanPod pod, File fanOutputDir) {
 		if (!fanOutputDir.exists()) {
 			fanOutputDir.mkdirs();
 		}
 		FCompiler compiler = FCompiler.make(path(fanOutputDir),
-				path(podRepo));
+				path(podsRepo));
 		List errors = compiler.compile(pod);
 		compiler.dispose();
 
@@ -28,6 +39,16 @@ public class FantomCompiler {
 		return status(CompileStatus.ERROR, Joiner.on("; ").join(errors.toArray()));
 	}
 
+	private void boot() {
+		System.getProperties().put("fan.jardist", "true");
+		System.getProperties().put("fan.home", ".");
+		Sys.boot();
+		
+		Env.cur().loadPodClass(Pod.find("sys"));
+		Env.cur().loadPodClass(Pod.find("compiler"));
+		Env.cur().loadPodClass(Pod.find("fmaven"));
+	}
+	
 	private static Uri path(File f) {
 		return Uri.fromStr(platformPath(f, true));
 	}

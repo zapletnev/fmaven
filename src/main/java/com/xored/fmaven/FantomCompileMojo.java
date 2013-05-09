@@ -16,10 +16,6 @@ import com.xored.fmaven.compiler.FantomCompiler;
 import com.xored.fmaven.utils.PathUtils;
 
 import fan.fmaven.FanPod;
-import fan.fmaven.Main;
-import fan.sys.Env;
-import fan.sys.Pod;
-import fan.sys.Sys;
 
 /**
  * @goal execute
@@ -68,7 +64,6 @@ public class FantomCompileMojo extends FatomMojo {
 		CompileStatus status = compile(buildFan);
 		long duration = (System.currentTimeMillis() - start);
 
-		
 		if (status.code != SUCCESSFUL) {
 			getLog().error("Compilation error: " + status.msg);
 		} else {
@@ -78,38 +73,26 @@ public class FantomCompileMojo extends FatomMojo {
 	}
 
 	private CompileStatus compile(File buildFan) {
-		load();
-		
-		FantomCompiler compiler = new FantomCompiler();
-
-		final FanPod fanPod = FanPod
-				.makeFromStr(podName, PathUtils.platformPath(buildFan))
-				.version(podVersion).summary(podSummary);
-		CompileStatus status;
+		File podsRepo;
 		try {
-			status = compiler.compile(fanPod, fanOutputDir, podsRepo());
+			podsRepo = podsRepo();
 		} catch (IOException e) {
 			return new CompileStatus(ERROR, "Could not create pods repo: "
 					+ e.getMessage());
 		}
-		return status;
+		
+		FantomCompiler compiler = new FantomCompiler(podsRepo);
+
+		final FanPod fanPod = FanPod
+				.makeFromStr(podName, PathUtils.platformPath(buildFan))
+				.version(podVersion).summary(podSummary);
+		
+		return compiler.compile(fanPod, fanOutputDir);
 	}
 	
-	private static void load() {
-		System.getProperties().put("fan.jardist", "true");
-		System.getProperties().put("fan.home", ".");
-		Sys.boot();
-		Sys.bootEnv.setArgs(new String[0]);
-		Env.cur().loadPodClass(Pod.find("sys"));
-		Env.cur().loadPodClass(Pod.find("compiler"));
-		Env.cur().loadPodClass(Pod.find("fmaven"));
-		
-		Main.main();
-	}
-
 	private File podsRepo() throws IOException {
-		File repoDir = File.createTempFile("podsRepo",
-				Long.toString(System.nanoTime()));
+		File repoDir = File.createTempFile("podsRepo", Long.toString(System.nanoTime()));
+		
 		repoDir.delete();
 		if (!repoDir.exists()) {
 			repoDir.mkdir();
