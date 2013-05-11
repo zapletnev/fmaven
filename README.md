@@ -13,7 +13,7 @@
       		<extensions>true</extensions>
       		<configuration>
       	    <podName>HelloPod</podName>
-            <podVersion>0.0.1</podVersion>
+            <podVersion>1.0.0</podVersion>
             <podSummary>Hello Pod Summary</podSummary>
           </configuration>
         </plugin>        
@@ -26,7 +26,7 @@
       <dependency>
     	  <groupId>org.fantom</groupId>
         <artifactId>sys</artifactId>
-        <version>1.0</version>
+        <version>1.0.64</version>
         <type>pod</type>
       </dependency>
     </dependencies>
