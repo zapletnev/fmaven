@@ -6,8 +6,8 @@ import java.io.File;
 
 import com.google.common.base.Joiner;
 
-import fan.fmaven.FCompiler;
-import fan.fmaven.FanPod;
+import fan.fancompiler.FCompiler;
+import fan.fancompiler.FanPod;
 import fan.sys.Env;
 import fan.sys.List;
 import fan.sys.Pod;
@@ -46,7 +46,7 @@ public class FantomCompiler {
 		
 		Env.cur().loadPodClass(Pod.find("sys"));
 		Env.cur().loadPodClass(Pod.find("compiler"));
-		Env.cur().loadPodClass(Pod.find("fmaven"));
+		Env.cur().loadPodClass(Pod.find("fancompiler"));
 	}
 	
 	private static Uri path(File f) {

@@ -15,7 +15,7 @@ import com.xored.fmaven.compiler.CompileStatus;
 import com.xored.fmaven.compiler.FantomCompiler;
 import com.xored.fmaven.utils.PathUtils;
 
-import fan.fmaven.FanPod;
+import fan.fancompiler.FanPod;
 
 /**
  * @goal execute

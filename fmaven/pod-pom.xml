@@ -1,0 +1,18 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.fantom</groupId>
+  <artifactId>sys</artifactId>
+  <version>1.0.64</version>
+  <packaging>pod</packaging>
+
+  <name>Fantom Core</name>
+  <description>Fantom system runtime</description>
+  <url>http://fantom.org/</url>
+
+  <licenses>
+     <license>
+        <name>The Academic Free License, v. 2.1</name>
+        <url>http://opensource.org/licenses/AFL-3.0</url>
+     </license>
+  </licenses>
+</project>
