@@ -9,6 +9,19 @@
   <description>Fantom system runtime</description>
   <url>http://fantom.org/</url>
 
+  <developers>
+    <developer>
+      <id>brian</id>
+      <name>Brian Frank</name>
+      <email>briansfrank@gmail.com</email>
+    </developer>
+    <developer>
+      <id>andy</id>
+      <name>Andy Frank</name>
+      <email>afrankvt@gmail.com</email>
+    </developer>
+  </developers>
+  
   <licenses>
      <license>
         <name>The Academic Free License, v. 2.1</name>
