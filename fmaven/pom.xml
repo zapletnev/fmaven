@@ -14,6 +14,12 @@
     </developer>
   </developers>
   
+  <scm>
+    <connection>scm:git:git@github.com:zapletnev/fmaven.git</connection>
+    <url>scm:git:git@github.com:zapletnev/fmaven.git</url>
+    <developerConnection>scm:git:git@github.com:zapletnev/fmaven.git</developerConnection>
+  </scm>
+  
   <properties>
     <encoding>UTF-8</encoding>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
