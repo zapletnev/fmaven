@@ -3,8 +3,24 @@
   <groupId>com.xored</groupId>
   <artifactId>fmaven-plugin</artifactId>
   <packaging>maven-plugin</packaging>
+  <name>fmaven</name>
   <version>0.0.1-SNAPSHOT</version>
-  <name>Fantom Maven Plugin</name>
+  <description>Fantom Compiler Plug-in</description>
+  <url>https://github.com/zapletnev/fmaven/</url>
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:git://github.com/zapletnev/fmaven.git</connection>
+    <url>scm:git:git://github.com/zapletnev/fmaven.git</url>
+    <developerConnection>scm:git:git://github.com/zapletnev/fmaven.git</developerConnection>
+  </scm>
   
   <developers>
     <developer>
@@ -13,18 +29,7 @@
       <email>igor.zapletnev@gmail.com</email>
     </developer>
   </developers>
-  
-  <scm>
-    <connection>scm:git:git@github.com:zapletnev/fmaven.git</connection>
-    <url>scm:git:git@github.com:zapletnev/fmaven.git</url>
-    <developerConnection>scm:git:git@github.com:zapletnev/fmaven.git</developerConnection>
-  </scm>
-  
-  <properties>
-    <encoding>UTF-8</encoding>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-  
+
   <build>
     <plugins>
       <plugin>

@@ -2,12 +2,11 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.fmaven</groupId>
   <artifactId>fantom-compiler</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
-
-  <name>fmaven</name>
-  <description>Fantom Maven Plug-in</description>
-  <url>http://github.com/zapletnev/fmaven</url>
+  <name>fantom-compiler</name>
+  <version>0.0.1-SNAPSHOT</version>
+  <description>Fantom Compiler Plug-in</description>
+  <url>https://github.com/zapletnev/fmaven/</url>
 
   <licenses>
     <license>
@@ -16,4 +15,23 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
+
+  <scm>
+    <connection>scm:git:git://github.com/zapletnev/fmaven.git</connection>
+    <url>scm:git:git://github.com/zapletnev/fmaven.git</url>
+    <developerConnection>scm:git:git://github.com/zapletnev/fmaven.git</developerConnection>
+  </scm>
+
+  <developers>
+    <developer>
+      <id>zapletnev</id>
+      <name>Igor Zapletnev</name>
+      <email>igor.zapletnev@gmail.com</email>
+    </developer>
+  </developers>
+
+  <properties>
+    <encoding>UTF-8</encoding>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
 </project>
