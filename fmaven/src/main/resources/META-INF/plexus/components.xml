@@ -12,11 +12,14 @@
 						com.xored:fmaven-plugin:resources
 					</generate-resources>
 					<compile>
-						com.xored:fmaven-plugin:execute 
+						com.xored:fmaven-plugin:compile
 					</compile>
 					<package>
 						com.xored:fmaven-plugin:package
 					</package>
+					<test>
+						com.xored:fmaven-plugin:test
+					</test>
 					<install>
 						org.apache.maven.plugins:maven-install-plugin:install
 					</install>

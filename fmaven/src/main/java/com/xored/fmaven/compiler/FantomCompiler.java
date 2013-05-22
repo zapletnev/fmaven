@@ -42,11 +42,12 @@ public class FantomCompiler {
 	private void boot() {
 		System.getProperties().put("fan.jardist", "true");
 		System.getProperties().put("fan.home", ".");
-		Sys.boot();
 		
 		Env.cur().loadPodClass(Pod.find("sys"));
 		Env.cur().loadPodClass(Pod.find("compiler"));
 		Env.cur().loadPodClass(Pod.find("fancompiler"));
+		
+		Sys.boot();
 	}
 	
 	private static Uri path(File f) {

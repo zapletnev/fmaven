@@ -7,7 +7,7 @@ class Build : build::BuildPod
     podName = "fancompiler"
     summary = "Extended Fantom Compiler"
     depends = ["sys 1.0", "compiler 1.0"]
-    srcDirs = [`tests/`, `fan/`, `fan/compiler/`]
+    srcDirs = [`tests/`, `fan/`, `fan/testing/`, `fan/compiler/`]
     resDirs = [`resources/tests/`]
   }
 }

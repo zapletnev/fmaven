@@ -18,7 +18,7 @@ import com.xored.fmaven.utils.PathUtils;
 import fan.fancompiler.FanPod;
 
 /**
- * @goal execute
+ * @goal compile
  * @phase compile
  */
 public class FantomCompileMojo extends FatomMojo {

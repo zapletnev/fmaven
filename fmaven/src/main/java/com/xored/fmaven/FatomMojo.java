@@ -48,7 +48,7 @@ public abstract class FatomMojo extends AbstractMojo {
 	 * Location of the output files from the Coffee Compiler. Defaults to
 	 * build.directory/fan
 	 * 
-	 * @parameter property="project.build.directory/fan/"
+	 * @parameter property="project.build.directory/fan/lib/fan"
 	 * @required
 	 */
 	protected File fanOutputDir;
