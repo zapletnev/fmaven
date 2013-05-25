@@ -16,6 +16,7 @@ import com.xored.fmaven.compiler.FantomCompiler;
 import com.xored.fmaven.utils.PathUtils;
 
 import fan.fancompiler.FanPod;
+import fan.sys.List;
 
 /**
  * @goal compile
@@ -86,7 +87,11 @@ public class FantomCompileMojo extends FatomMojo {
 		final FanPod fanPod = FanPod
 				.makeFromStr(podName, PathUtils.platformPath(buildFan))
 				.version(podVersion).summary(podSummary);
-		
+		if (srcDirs != null) {
+			fanPod.src(new List(srcDirs.toArray(new String[srcDirs.size()])));
+		} else {
+			fanPod.src(new List(new String[] { "fan/" }));
+		}
 		return compiler.compile(fanPod, fanOutputDir);
 	}
 	

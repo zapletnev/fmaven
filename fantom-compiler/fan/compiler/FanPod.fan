@@ -8,7 +8,7 @@ class FanPod
   Str:Obj podIndex := [:]
   Str podSummary := ""
   Uri[] javaDirs := [,]
-  Uri[] podSrc := [`fan/`, `tests/`]
+  Uri[] podSrc := [`fan/`]
   
   Depend[] rawDepends := Depend[,]
   Str:Str meta := [:]
