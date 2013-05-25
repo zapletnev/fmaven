@@ -1,10 +1,10 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.fmaven</groupId>
-  <artifactId>fantom-compiler</artifactId>
+  <groupId>org.fantom</groupId>
+  <artifactId>fmaven-compiler</artifactId>
   <packaging>jar</packaging>
   <name>fantom-compiler</name>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.1-SNAPSHOT</version>
   <description>Fantom Compiler Plug-in</description>
   <url>https://github.com/zapletnev/fmaven/</url>
 

@@ -6,7 +6,7 @@ class Build : BuildScript
   Void distFansh()
   {
     dist := JarDist(this)
-    dist.outFile = `./fantom-compiler.jar`.toFile.normalize
+    dist.outFile = `./fmaven-compiler.jar`.toFile.normalize
     dist.podNames = Str["fancompiler", "compiler"]
     dist.mainMethod = "fancompiler::Main.main"
     dist.run
