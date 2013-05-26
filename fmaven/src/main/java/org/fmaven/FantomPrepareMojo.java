@@ -1,4 +1,4 @@
-package com.xored.fmaven;
+package org.fmaven;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;

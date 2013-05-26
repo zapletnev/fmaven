@@ -4,8 +4,8 @@ class Build : build::BuildPod
 {
   new make()
   {
-    podName = "fancompiler"
-    summary = "Extended Fantom Compiler"
+    podName = "fmavencompiler"
+    summary = "fMaven Compiler"
     depends = ["sys 1.0", "compiler 1.0"]
     srcDirs = [`tests/`, `fan/`, `fan/testing/`, `fan/compiler/`]
     resDirs = [`resources/tests/`]

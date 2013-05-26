@@ -1,17 +1,19 @@
-
 class FanPod
 {
-  Str podName
   File podDir
   
-  Version podVersion := Version("1.0")
-  Str:Obj podIndex := [:]
+  Str podName
   Str podSummary := ""
-  Uri[] javaDirs := [,]
-  Uri[] podSrc := [`fan/`]
+  Version podVersion := Version("1.0")
+  
+  Bool podDocApi
+  Bool podDocSrc
+  Bool podIncludeDoc
+  
+  Uri[] podSrcDirs := [`fan/`]
+  Uri[] podResDirs := [,]
   
   Depend[] rawDepends := Depend[,]
-  Str:Str meta := [:]
   
   new make(Str name, Uri podDirPath) {
     podName = name
@@ -24,25 +26,40 @@ class FanPod
     return this
   }
   
-  FanPod index(Str index, Obj obj) 
-  { 
-    podIndex[index] = obj
-    return this
-  }
-  
   FanPod summary(Str summary) 
   { 
     podSummary = summary
     return this
   }
   
-  FanPod src(Str[] srcs)
+  FanPod srcDirs(Str[] srcs)
   {
-    podSrc = srcs.map |Str src->Uri| { Uri(src) }
+    podSrcDirs = srcs.map |Str src->Uri| { Uri(src) }
     return this
   }
   
-  File baseDir() { podDir }
+  FanPod resDirs(Str[] resources)
+  {
+    podResDirs = resources.map |Str src->Uri| { Uri(src) }
+    return this
+  }
+  
+  FanPod docApi(Bool value) 
+  {
+    podDocApi = value
+    return this;
+  }
+  
+  FanPod docSrc(Bool value) 
+  {
+    podDocSrc = value
+    return this;
+  }
+  
+  FanPod includeDoc(Bool value) {
+    podIncludeDoc = value
+    return this
+  }
   
   FanPod depend(Str raw) {
     try {

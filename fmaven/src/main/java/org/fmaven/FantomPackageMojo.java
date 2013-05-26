@@ -1,4 +1,4 @@
-package com.xored.fmaven;
+package org.fmaven;
 
 import java.io.File;
 

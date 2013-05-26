@@ -1,7 +1,6 @@
-package com.xored.fmaven;
+package org.fmaven;
 
 import java.io.File;
-import java.util.List;
 
 import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.AbstractMojo;
@@ -53,9 +52,4 @@ public abstract class FatomMojo extends AbstractMojo {
 	 * @required
 	 */
 	protected File fanOutputDir;
-	
-	/**
-     * @parameter
-     */
-    protected List<?> srcDirs;
 }
