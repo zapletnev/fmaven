@@ -15,21 +15,15 @@
       	    <podName>HelloPod</podName>
             <podVersion>1.0.0</podVersion>
             <podSummary>Hello Pod Summary</podSummary>
-            <includeDoc>true</includeDoc>
-  			    <docApi>true</docApi>
-  			    <docSrc>false</docSrc>
             <srcDirs>
-    		  	  <srcDir>fan/</srcDir>
-  			  	  <srcDir>tests/</srcDir>
-  			    </srcDirs>
-  			    <resDirs>
-  			      <resDir>tests/</resDir>
-  			    </resDirs>
+              <srcDir>fan/</srcDir>
+              <srcDir>tests/</srcDir>
+            </srcDirs>
           </configuration>
         </plugin>        
       </plugins>
     </build>
-    
+            
 ### Depencencies
     <dependencies>
       ...
