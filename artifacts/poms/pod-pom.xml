@@ -1,12 +1,12 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.fantom</groupId>
-  <artifactId>sys</artifactId>
-  <version>1.0.64</version>
+  <artifactId>{ID}</artifactId>
+  <version>{VERSION}</version>
   <packaging>pod</packaging>
 
-  <name>Fantom Core</name>
-  <description>Fantom system runtime</description>
+  <name>{ID}</name>
+  <description>{SUMMARY}</description>
   <url>http://fantom.org/</url>
 
   <developers>
