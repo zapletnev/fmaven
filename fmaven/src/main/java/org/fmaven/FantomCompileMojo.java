@@ -48,6 +48,7 @@ public class FantomCompileMojo extends FatomMojo {
 
 		for (Artifact a : project.getDependencyArtifacts()) {
 			if (a.getFile() == null) {
+				// TODO exceprion
 				continue;
 			}
 			try {

@@ -7,7 +7,7 @@ class Build : build::BuildPod
     podName = "fmaven"
     summary = "fMaven Compiler"
     depends = ["sys 1.0", "compiler 1.0", "concurrent 1.0", "build 1.0"]
-    srcDirs = [`tests/`, `fan/`, `fan/compiler/`]
+    srcDirs = [`fan/`, `fan/compiler/`]
     resDirs = [`resources/tests/`]
   }
 }

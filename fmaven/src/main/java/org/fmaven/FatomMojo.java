@@ -2,10 +2,8 @@ package org.fmaven;
 
 import java.io.File;
 
-import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.project.MavenProject;
-import org.apache.maven.toolchain.ToolchainManager;
 
 public abstract class FatomMojo extends AbstractMojo {
 
@@ -17,24 +15,6 @@ public abstract class FatomMojo extends AbstractMojo {
 	 * @readonly
 	 */
 	protected MavenProject project;
-
-	/**
-	 * The Maven Session Object
-	 * 
-	 * @parameter property="session"
-	 * @required
-	 * @readonly
-	 */
-	protected MavenSession session;
-
-	/**
-	 * The toolchain manager to use.
-	 * 
-	 * @component
-	 * @required
-	 * @readonly
-	 */
-	protected ToolchainManager toolchainManager;
 
 	/**
 	 * Default location of .fan source files.
