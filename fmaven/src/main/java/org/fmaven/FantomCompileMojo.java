@@ -2,6 +2,7 @@ package org.fmaven;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -25,6 +26,14 @@ public class FantomCompileMojo extends FatomMojo {
 							+ "src/main/fan directory");
 		}
 
+		URL runtimeZip = this.getClass().getClassLoader()
+				.getResource("runtime-1.0.65.zip");
+		System.out.println(runtimeZip);
+
+		runtimeZip = this.getClass().getClassLoader()
+				.getResource("/runtime-1.0.65.zip");
+		System.out.println(runtimeZip);
+
 		File podsRepo;
 		try {
 			podsRepo = podsRepo();
@@ -32,6 +41,8 @@ public class FantomCompileMojo extends FatomMojo {
 			throw new MojoExecutionException("Could not create pods repo: "
 					+ e.getMessage());
 		}
+
+		System.out.println("Compiling...");
 	}
 
 	private static final String PODS_REPO = "podsRepo";

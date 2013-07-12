@@ -9,16 +9,16 @@
 			<configuration>
 				<phases>
 					<generate-resources>
-						com.xored:fmaven-plugin:resources
+						org.fantom:fmaven-plugin:resources
 					</generate-resources>
 					<compile>
-						com.xored:fmaven-plugin:compile
+						org.fantom:fmaven-plugin:compile
 					</compile>
 					<package>
-						com.xored:fmaven-plugin:package
+						org.fantom:fmaven-plugin:package
 					</package>
 					<test>
-						com.xored:fmaven-plugin:test
+						org.fantom:fmaven-plugin:test
 					</test>
 					<install>
 						org.apache.maven.plugins:maven-install-plugin:install
